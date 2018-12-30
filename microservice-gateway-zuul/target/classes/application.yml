@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: microservice-gateway-zuul
+server:
+  port: 8040
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000 #解决上传附件超时
+#http://localhost:8040/zuul/microservice-file-upload/upload  (上传大文件需要配置zuul的上传大小)可以+zuul直接跳过mvc调度
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000

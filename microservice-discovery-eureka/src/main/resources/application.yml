@@ -1,0 +1,22 @@
+security:
+  basic:
+    enabled: true
+  user:
+    name: user
+    password: password123
+server:
+  port: 8761
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+spring:
+  application:
+    name: microservice-discovery-eureka

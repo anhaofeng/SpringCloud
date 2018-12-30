@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: microservice-gateway-zuul
+server:
+  port: 8040
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password123@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    abc:
+     path: /myuser/*
+     sensitiveHeaders:Cookie,Set-Cookie,Authorization # 路由向下游服务 ignore一些头部信息
+     url:http://downstream
+  level:
+    com.netflix: debug
